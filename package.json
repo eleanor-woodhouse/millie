@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "eslint . --ignore-path .gitignore --ext .ts,.tsx --fix",
+    "prettier:check": "prettier --ignore-path .gitignore --check '**/*.{js,ts,tsx,css,html}'",
+    "prettier:fix": "prettier --ignore-path .gitignore --write '**/*.{js,ts,tsx,css,html}'"
   },
   "dependencies": {
     "@sanity/image-url": "^1.0.2",
