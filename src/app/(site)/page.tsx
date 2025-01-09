@@ -15,7 +15,6 @@ export default async function Home() {
   const categories = await getCategories();
   const contactDetails = await getContactDetails();
   const aboutText = await getAboutText();
-  
 
   function getWidthHeight(width: number, height: number): number[] {
     const size = 250;
@@ -93,29 +92,49 @@ export default async function Home() {
               <p className={styles.writingCategoryHeaders}>
                 {category.categoryTitle}
               </p>
-              {category.writtenTexts.map((text) => { 
+              {category.writtenTexts.map((text) => {
                 if (!text.link && !text.pdf) {
                   return (
-                  <div key={text._id} className={styles.writingListItemWrapper}>
-                    <p className={styles.year}>{text.date}</p>
-                    <p key={text._id} className={(styles.writingListItem, styles.tooltip)}>
-                      {text.title} – {text.publishedBy}
-                      <span className={styles.tooltipText}>{text.altText}</span>
-                    </p>
-                  </div>
-                )}
+                    <div
+                      key={text._id}
+                      className={styles.writingListItemWrapper}
+                    >
+                      <p className={styles.year}>{text.date}</p>
+                      <p
+                        key={text._id}
+                        className={(styles.writingListItem, styles.tooltip)}
+                      >
+                        {text.title} – {text.publishedBy}
+                        <span className={styles.tooltipText}>
+                          {text.altText}
+                        </span>
+                      </p>
+                    </div>
+                  );
+                }
                 let link: string;
-                text.link ? link = text.link : text.pdf.url ? link = text.pdf.url : link = "";
+                text.link
+                  ? (link = text.link)
+                  : text.pdf.url
+                    ? (link = text.pdf.url)
+                    : (link = "");
                 return (
-                <div key={text._id} className={styles.writingListItemWrapper}>
-                   <a href={link} target="_blank" rel="noreferrer">
-                    <p className={styles.year}>{text.date}</p>
-                    <p key={text._id} className={(styles.writingListItem, styles.tooltip)}>
-                      {text.title} – {text.publishedBy}
-                      <span className={styles.tooltipText}>{text.altText}</span>
-                    </p></a>
-                </div>
-              )})}
+                  <div key={text._id} className={styles.writingListItemWrapper}>
+                    <a href={link} target="_blank" rel="noreferrer">
+                      <p className={styles.year}>{text.date}</p>
+                      <p
+                        key={text._id}
+                        className={(styles.writingListItem, styles.tooltip)}
+                      >
+                        {text.title} – {text.publishedBy}
+                        <span className={styles.tooltipText}>
+                          {text.altText}
+                        </span>
+                      </p>
+                    </a>
+                  </div>
+                );
+              })}
             </div>
           );
         })}
