@@ -26,8 +26,18 @@ export const textType = defineType({
       type: "string",
     }),
     defineField({
+      name: "pdf",
+      title: "PDF",
+      type: "file",
+    }),
+    defineField({
       name: "description",
       title: "Description",
+      type: "string",
+    }),
+    defineField({
+      name: "altText",
+      title: "Alt Text",
       type: "string",
     }),
   ],

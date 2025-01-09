@@ -10,5 +10,10 @@ export const homepageImageType = defineType({
       title: "Image",
       type: "image",
     }),
+    defineField({
+      name: "altText",
+      title: "Alt Text",
+      type: "string",
+    }),
   ],
 });

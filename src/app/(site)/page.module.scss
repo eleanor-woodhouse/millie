@@ -1,3 +1,11 @@
+.birdContainer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+
 .header {
     margin-bottom: 1rem;
 }
@@ -37,6 +45,50 @@
     margin-bottom: 0.9rem;
 }
 
+.writingListItemWrapper {
+    display: flex;
+}
+
+.year {
+    margin-right: 10px;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
 .writingListItem {
     font-size: 0.85rem;
 }
+
+.tooltip {
+position: relative;
+display: inline-block;
+font-size: 0.85rem;
+}
+
+.tooltipText {
+visibility: hidden;
+width: auto;
+max-width: 300px; /* Optional: limit the width for long tooltips */
+background-color: #e1e1e2; /* Brownish-grey background (similar to Chrome's) */
+color: #000; /* Black text */
+text-align: center;
+border-radius: 4px; /* Rounded corners */
+padding: 3px 4px; /* Space inside the box */
+font-size: 11px; /* Match browser font size */
+font-family: Arial, sans-serif; /* Match default browser tooltip font */
+box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+position: absolute;
+z-index: 1000;
+top: -20px; /* Position above the text */
+transform: translateX(50%);
+white-space: nowrap; /* Prevent wrapping */
+opacity: 0;
+transition: opacity 0.2s ease-in-out;
+border: 1px solid #ccc; /* Light grey border */
+}
+
+.tooltip:hover .tooltipText {
+visibility: visible;
+opacity: 1;
+}
+  

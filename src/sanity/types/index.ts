@@ -11,6 +11,19 @@ export type Image = {
 
 export type HomepageImage = {
   image: Image;
+  altText: string;
+};
+
+export type ContactDetails = {
+  contactLines: string[];
+};
+
+export type AboutText = {
+  text: string;
+};
+
+export type PDF = {
+  url: string;
 };
 
 export type WrittenText = {
@@ -21,11 +34,14 @@ export type WrittenText = {
   publishedBy: string;
   link: string;
   description: string;
+  altText: string;
+  pdf: PDF;
 };
 
 export type Category = {
   _id: string;
   _createdAt: string;
-  textTitle: string;
+  categoryTitle: string;
   writtenTexts: WrittenText[];
+  orderRank: string;
 };

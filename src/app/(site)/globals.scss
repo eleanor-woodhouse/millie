@@ -6,11 +6,9 @@
   
   html,
   body {
-    overflow: auto;
-    white-space: nowrap;
+    overflow: visible;
     position: relative;
-    height: 100vh;
-    margin: 0.5rem;
+    margin: 4.8px;
   }
   
   a {
@@ -46,16 +44,11 @@
       outline: inherit;
   }
   
-  p {
-    cursor: default;
-  }
-  
   /* Mobile */
   @media (max-width: 700px) {
     body {
-      overflow: auto;
       height: fit-content;
-      white-space: nowrap;
       position: relative;
+      overflow-wrap: break-word; 
     }
   }

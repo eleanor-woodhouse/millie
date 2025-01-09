@@ -1,6 +1,11 @@
 import Image from "next/image";
 import styles from "./page.module.scss";
-import { getCategories, getHomepageImage } from "@/sanity/api";
+import {
+  getAboutText,
+  getCategories,
+  getContactDetails,
+  getHomepageImage,
+} from "@/sanity/api";
 import { Orbitron } from "next/font/google";
 
 const inter = Orbitron({ subsets: ["latin"], weight: ["400"] });
@@ -8,6 +13,9 @@ const inter = Orbitron({ subsets: ["latin"], weight: ["400"] });
 export default async function Home() {
   const homepageImage = await getHomepageImage();
   const categories = await getCategories();
+  const contactDetails = await getContactDetails();
+  const aboutText = await getAboutText();
+  
 
   function getWidthHeight(width: number, height: number): number[] {
     const size = 250;
@@ -31,6 +39,9 @@ export default async function Home() {
 
   return (
     <main>
+      <div className={styles.birdContainer}>
+        <img src="/swallows.gif" alt="birds" width="115%" />
+      </div>
       <div className={styles.header}>
         <div className={styles.titles}>
           <h3 className={styles.title}>MILLIE DOW</h3>
@@ -52,7 +63,8 @@ export default async function Home() {
                 src={image.image.url}
                 fill
                 style={{ objectFit: "contain" }}
-                alt="MillieDow.Com"
+                alt={image.altText}
+                title={image.altText}
               />
             </div>
           );
@@ -61,16 +73,17 @@ export default async function Home() {
       <div className={styles.writing}>
         <div className={styles.writingCategory}>
           <p className={styles.writingCategoryHeaders}>About</p>
-          <p className={styles.writingListItem}>
-            Millie Dow is an arts writer based in Melbourne
-          </p>
+          <p className={styles.writingListItem}>{aboutText.text}</p>
         </div>
       </div>
       <div className={styles.writing}>
         <div className={styles.writingCategory}>
           <p className={styles.writingCategoryHeaders}>Contact</p>
-          <p className={styles.writingListItem}>milledow@gmail.com</p>
-          <p className={styles.writingListItem}>+61 2984 7832</p>
+          {contactDetails.contactLines.map((line) => (
+            <p key={line} className={styles.writingListItem}>
+              {line}
+            </p>
+          ))}
         </div>
       </div>
       <div className={styles.writing}>
@@ -78,13 +91,31 @@ export default async function Home() {
           return (
             <div key={category._id} className={styles.writingCategory}>
               <p className={styles.writingCategoryHeaders}>
-                {category.textTitle}
+                {category.categoryTitle}
               </p>
-              {category.writtenTexts.map((text) => (
-                <p key={text._id} className={styles.writingListItem}>
-                  {text.date} {text.title} – {text.publishedBy}
-                </p>
-              ))}
+              {category.writtenTexts.map((text) => { 
+                if (!text.link && !text.pdf) {
+                  return (
+                  <div key={text._id} className={styles.writingListItemWrapper}>
+                    <p className={styles.year}>{text.date}</p>
+                    <p key={text._id} className={(styles.writingListItem, styles.tooltip)}>
+                      {text.title} – {text.publishedBy}
+                      <span className={styles.tooltipText}>{text.altText}</span>
+                    </p>
+                  </div>
+                )}
+                let link: string;
+                text.link ? link = text.link : text.pdf.url ? link = text.pdf.url : link = "";
+                return (
+                <div key={text._id} className={styles.writingListItemWrapper}>
+                   <a href={link} target="_blank" rel="noreferrer">
+                    <p className={styles.year}>{text.date}</p>
+                    <p key={text._id} className={(styles.writingListItem, styles.tooltip)}>
+                      {text.title} – {text.publishedBy}
+                      <span className={styles.tooltipText}>{text.altText}</span>
+                    </p></a>
+                </div>
+              )})}
             </div>
           );
         })}
