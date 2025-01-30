@@ -71,7 +71,7 @@ width:max-content;
 max-width: 600px; /* Optional: limit the width for long tooltips */
 background-color: #e1e1e2; /* Brownish-grey background (similar to Chrome's) */
 color: #000; /* Black text */
-text-align: center;
+text-align: left;
 border-radius: 4px; /* Rounded corners */
 padding: 3px 4px; /* Space inside the box */
 font-size: 11px; /* Match browser font size */
@@ -80,7 +80,7 @@ box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 position: absolute;
 z-index: 1000;
 top: -20px; /* Position above the text */
-transform: translateX(50%);
+transform: translateX(10%);
 // white-space: nowrap; /* Prevent wrapping */
 opacity: 0;
 transition: opacity 0.2s ease-in-out;
