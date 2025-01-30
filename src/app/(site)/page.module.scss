@@ -91,3 +91,18 @@ border: 1px solid #ccc; /* Light grey border */
 visibility: visible;
 opacity: 1;
 }
+
+  /* Mobile */
+  @media (max-width: 700px) {
+    .tooltipText {
+        display: none;
+        visibility: hidden;
+        overflow-x: hidden;
+    }
+
+    .tooltip:hover .tooltipText {
+        display: none;
+        visibility: hidden;
+        overflow-x: hidden;
+    }
+  }
