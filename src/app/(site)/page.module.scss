@@ -92,6 +92,10 @@ visibility: visible;
 opacity: 1;
 }
 
+.textLink {
+    display: flex;
+}
+
   /* Mobile */
   @media (max-width: 700px) {
     .tooltipText {

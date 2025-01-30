@@ -120,7 +120,12 @@ export default async function Home() {
                     : (link = "");
                 return (
                   <div key={text._id} className={styles.writingListItemWrapper}>
-                    <a href={link} target="_blank" rel="noreferrer">
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.textLink}
+                    >
                       <p className={styles.year}>{text.date}</p>
                       <p
                         key={text._id}
