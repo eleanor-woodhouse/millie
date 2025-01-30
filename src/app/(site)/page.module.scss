@@ -67,8 +67,8 @@ font-size: 0.85rem;
 
 .tooltipText {
 visibility: hidden;
-width: auto;
-max-width: 300px; /* Optional: limit the width for long tooltips */
+width:max-content;
+max-width: 600px; /* Optional: limit the width for long tooltips */
 background-color: #e1e1e2; /* Brownish-grey background (similar to Chrome's) */
 color: #000; /* Black text */
 text-align: center;
@@ -81,7 +81,7 @@ position: absolute;
 z-index: 1000;
 top: -20px; /* Position above the text */
 transform: translateX(50%);
-white-space: nowrap; /* Prevent wrapping */
+// white-space: nowrap; /* Prevent wrapping */
 opacity: 0;
 transition: opacity 0.2s ease-in-out;
 border: 1px solid #ccc; /* Light grey border */
@@ -91,4 +91,3 @@ border: 1px solid #ccc; /* Light grey border */
 visibility: visible;
 opacity: 1;
 }
-  
