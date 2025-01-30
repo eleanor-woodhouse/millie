@@ -124,13 +124,12 @@ export default async function Home() {
                       <p className={styles.year}>{text.date}</p>
                       <p
                         key={text._id}
-                        className={
-                          (styles.writingListItem,
-                          text.altText ? styles.tooltip : "")
-                        }
+                        className={(styles.writingListItem, styles.tooltip)}
                       >
                         {text.title} – {text.publishedBy}
-                        <span className={styles.tooltipText}>
+                        <span
+                          className={text.altText ? styles.tooltipText : ""}
+                        >
                           {text.altText}
                         </span>
                       </p>
